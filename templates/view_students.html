@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>View Students</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+
+    <div class="logo">
+        Student Management System
+    </div>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/add">Add Student</a>
+        <a href="/students">View Students</a>
+        <a href="/search">Search</a>
+    </div>
+
+</nav>
+
+
+<!-- Main Container -->
+<div class="container">
+
+    <h1>All Students</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+        <div class="message {{ category }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endwith %}
+
+    <!-- Responsive Table -->
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>USN</th>
+                <th>Branch</th>
+                <th>Semester</th>
+                <th>Marks</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for student in students %}
+
+            <tr>
+
+                <td>{{ student.id }}</td>
+
+                <td>{{ student.name }}</td>
+
+                <td>{{ student.usn }}</td>
+
+                <td>{{ student.branch }}</td>
+
+                <td>{{ student.semester }}</td>
+
+                <td>{{ student.marks }}</td>
+
+                <td>
+
+                    <a href="/edit/{{ student.id }}"
+                       class="button edit">
+                        Edit
+                    </a>
+
+                    <a href="/delete/{{ student.id }}"
+                       class="button delete"
+                       onclick="return confirm('Delete this student?')">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+    <br>
+
+    <a href="/" class="button">
+        Back to Home
+    </a>
+
+</div>
+
+</body>
+</html>

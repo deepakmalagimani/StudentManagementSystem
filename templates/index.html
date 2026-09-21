@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management System</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">Student Management System</div>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/add">Add Student</a>
+        <a href="/students">View Students</a>
+        <a href="/search">Search</a>
+    </div>
+</nav>
+
+<div class="dashboard">
+
+    <h1>Student Management System</h1>
+
+    <p class="subtitle">
+        Manage student records easily and efficiently
+    </p>
+
+   <div class="dashboard-buttons">
+
+    <div class="dashboard-card">
+        <h2>📊</h2>
+        <h3>Total Students</h3>
+        <p>{{ total_students }}</p>
+    </div>
+
+    <a href="/add" class="dashboard-card">
+        <h2>➕</h2>
+        <h3>Add Student</h3>
+        <p>Add a new student record</p>
+    </a>
+
+    <a href="/students" class="dashboard-card">
+        <h2>👥</h2>
+        <h3>View Students</h3>
+        <p>View all student records</p>
+    </a>
+
+    <a href="/search" class="dashboard-card">
+        <h2>🔍</h2>
+        <h3>Search Student</h3>
+        <p>Find a student by name or USN</p>
+    </a>
+
+</div>
+
+</div>
+
+<footer>
+    <p>Student Management System | Python Flask Project</p>
+</footer>
+
+</body>
+</html>
